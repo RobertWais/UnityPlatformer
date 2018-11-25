@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ladder
+  - Climbing
+  - Player
+  - Background
+  - Enemy
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 3219617569
+    locked: 0
+  - name: Climbing
+    uniqueID: 932441407
+    locked: 0
+  - name: Enemy
+    uniqueID: 372465483
     locked: 0
   - name: Player
     uniqueID: 2143505455

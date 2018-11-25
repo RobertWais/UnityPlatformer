@@ -8,14 +8,18 @@ public class Player : MonoBehaviour {
     //Config
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 2f;
 
     //State 
     bool isAlive = true;
+    float gravityAtFirst;
 
     //Cached Components References
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    Collider2D myCollider;
+
+    CapsuleCollider2D myCollider;
+    BoxCollider2D myBoxCollider;
 
 
 
@@ -23,15 +27,18 @@ public class Player : MonoBehaviour {
 	void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider = GetComponent<Collider2D>();
+        myCollider = GetComponent<CapsuleCollider2D>();
+        myBoxCollider = GetComponent<BoxCollider2D>();
+        gravityAtFirst = myRigidBody.gravityScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Run();
         Jump();
-        FlipSprite();
-	}
+        FlipSprite(); 
+        Climb();
+    }
 
     private void Run(){
         float controlFloat = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -43,7 +50,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Jump(){
-        if(!myCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){
+        if(!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){
             return;
         }
         //SPACE BTN
@@ -53,6 +60,26 @@ public class Player : MonoBehaviour {
         }
 
     }
+
+    private void Climb(){
+        
+        if(!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+            myAnimator.SetBool("Climbing", false);
+
+            //For stalling on ladder
+            myRigidBody.gravityScale = gravityAtFirst;
+            return;
+        }
+        myRigidBody.gravityScale = 0f;
+        float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        Debug.Log("Control: " + controlThrow);
+        Vector2 climbVelocity = new Vector2(myRigidBody.velocity.x, controlThrow*climbSpeed);
+        myRigidBody.velocity = climbVelocity;
+
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+    }
+
 
 
     private void FlipSprite(){
@@ -64,4 +91,6 @@ public class Player : MonoBehaviour {
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
         }
     }
+
+
 }
