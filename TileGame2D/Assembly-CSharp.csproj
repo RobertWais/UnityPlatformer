@@ -70,6 +70,8 @@
     <Compile Include="Assets\2d-extras-master\Assets\Tilemap\Tiles\Terrain Tile\Scripts\TerrainTile.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Shooter.cs" />
     <None Include="Assets\2d-extras-master\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/robertwais/Documents/unityProjects/TileGame2D/TileGame2D/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

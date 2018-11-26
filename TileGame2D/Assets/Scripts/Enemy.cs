@@ -8,13 +8,18 @@ public class Enemy : MonoBehaviour {
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidbody;
 
+
+
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+       
+
         if (IfIsFacingRight()){
             myRigidbody.velocity = new Vector2(moveSpeed, 0f);
         }else{
@@ -31,4 +36,5 @@ public class Enemy : MonoBehaviour {
     {
         transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), 1f);
     }
+
 }

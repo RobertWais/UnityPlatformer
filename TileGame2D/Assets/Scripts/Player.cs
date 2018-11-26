@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Animations;
+using UnityEditor;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
 
@@ -9,8 +12,13 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 2f;
+    [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    //Change later
+    [SerializeField] Projectile projectile;
 
     //State 
+    //For Fireball Strictly
+    bool isFacingRight = true;
     bool isAlive = true;
     float gravityAtFirst;
 
@@ -23,8 +31,9 @@ public class Player : MonoBehaviour {
 
 
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<CapsuleCollider2D>();
@@ -34,10 +43,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!isAlive){
+            return;
+        }
         Run();
         Jump();
         FlipSprite(); 
         Climb();
+        Die();
+        Fire();
     }
 
     private void Run(){
@@ -72,7 +86,6 @@ public class Player : MonoBehaviour {
         }
         myRigidBody.gravityScale = 0f;
         float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        Debug.Log("Control: " + controlThrow);
         Vector2 climbVelocity = new Vector2(myRigidBody.velocity.x, controlThrow*climbSpeed);
         myRigidBody.velocity = climbVelocity;
 
@@ -88,7 +101,55 @@ public class Player : MonoBehaviour {
 
         if (playerHorizontalSpeed){
             //+1 or -1
+
+
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
+
+            if(isFacingRight){
+                isFacingRight = false;
+            }else{
+                isFacingRight = true;
+            }
+            print("IsFacing Right: " + isFacingRight);
+        }
+    }
+
+    private void Die(){
+        if (myCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        {
+            Debug.Log("Die");
+            myAnimator.SetTrigger("Die");
+            GetComponent<Rigidbody2D>().velocity = deathKick;
+            isAlive = false;
+        }
+    }
+
+
+
+
+
+
+    /////////////////////////////
+    /// 
+
+
+   
+    public void Fire()
+    {
+        //SPACE BTN
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        {
+
+            projectile.direction = 0;
+            if (isFacingRight)
+            {
+                projectile.direction = 1;
+                Instantiate(projectile, transform.position, projectile.transform.rotation);
+            }else{
+
+            }
+
+
         }
     }
 
