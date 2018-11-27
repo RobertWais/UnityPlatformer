@@ -143,6 +143,8 @@ public class Player : MonoBehaviour {
 
 
              projectile.direction = right;
+            //projectile.y = transform.position.y;
+            //projectile.x = transform.position.x
             
             Instantiate(projectile, transform.position, projectile.transform.rotation);
 

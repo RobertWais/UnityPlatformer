@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 
 
     public int direction;
+    public Transform trans;
+
     float dir;
 	// Use this for initialization
 	void Start () {
@@ -15,6 +17,7 @@ public class Projectile : MonoBehaviour {
         {
             transform.Rotate(0, 0, -180);
         }
+        //transform.position = transform.position;
     }
 
     // Update is called once per frame
