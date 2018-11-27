@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
     bool isFacingRight = true;
     bool isAlive = true;
     float gravityAtFirst;
+    int right = 1;
 
     //Cached Components References
     Rigidbody2D myRigidBody;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour {
 
     CapsuleCollider2D myCollider;
     BoxCollider2D myBoxCollider;
+    Collider2D fullCollider;
 
 
 
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour {
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<CapsuleCollider2D>();
         myBoxCollider = GetComponent<BoxCollider2D>();
+        fullCollider = GetComponent<Collider2D>();
         gravityAtFirst = myRigidBody.gravityScale;
 	}
 	
@@ -101,21 +104,19 @@ public class Player : MonoBehaviour {
 
         if (playerHorizontalSpeed){
             //+1 or -1
-
-
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
-
-            if(isFacingRight){
-                isFacingRight = false;
+            print("Velocity: " + Mathf.Sign(myRigidBody.velocity.x));
+            if(Mathf.Sign(myRigidBody.velocity.x).Equals(1f))
+            {
+                right = 1;
             }else{
-                isFacingRight = true;
+                right = -1;
             }
-            print("IsFacing Right: " + isFacingRight);
         }
     }
 
     private void Die(){
-        if (myCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if (fullCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
             Debug.Log("Die");
             myAnimator.SetTrigger("Die");
@@ -140,14 +141,10 @@ public class Player : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
 
-            projectile.direction = 0;
-            if (isFacingRight)
-            {
-                projectile.direction = 1;
-                Instantiate(projectile, transform.position, projectile.transform.rotation);
-            }else{
 
-            }
+             projectile.direction = right;
+            
+            Instantiate(projectile, transform.position, projectile.transform.rotation);
 
 
         }

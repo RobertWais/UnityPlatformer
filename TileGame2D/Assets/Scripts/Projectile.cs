@@ -10,16 +10,11 @@ public class Projectile : MonoBehaviour {
     float dir;
 	// Use this for initialization
 	void Start () {
-
-        if (direction == 1)
+        dir = 0.10f;
+        if (direction == -1)
         {
-            dir = 0.10f;
+            transform.Rotate(0, 0, -180);
         }
-        else
-        {
-            dir = -0.10f;
-        }
-
     }
 
     // Update is called once per frame
