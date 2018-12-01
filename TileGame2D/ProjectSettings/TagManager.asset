@@ -21,7 +21,7 @@ TagManager:
   - Enemy
   - Hazards
   - Fireball
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -61,4 +61,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2715235445
+    locked: 0
+  - name: Interactables
+    uniqueID: 1524017771
     locked: 0

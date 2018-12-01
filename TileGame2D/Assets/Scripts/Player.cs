@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     //Change later
     [SerializeField] Projectile projectile;
 
+
     //State 
     //For Fireball Strictly
     bool isFacingRight = true;

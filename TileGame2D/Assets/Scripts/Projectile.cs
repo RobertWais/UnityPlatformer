@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-
+    
     public int direction;
     public Transform trans;
 
     float dir;
 	// Use this for initialization
 	void Start () {
+       
         dir = 0.10f;
         if (direction == -1)
         {

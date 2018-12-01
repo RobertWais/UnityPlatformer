@@ -15,5 +15,5 @@ MonoBehaviour:
   - m_From: '**ANY CAMERA**'
     m_To: Virtual Camera Die
     m_Blend:
-      m_Style: 2
+      m_Style: 1
       m_Time: 2
