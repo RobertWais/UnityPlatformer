@@ -106,7 +106,7 @@ public class Player : MonoBehaviour {
         if (playerHorizontalSpeed){
             //+1 or -1
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
-            print("Velocity: " + Mathf.Sign(myRigidBody.velocity.x));
+            //print("Velocity: " + Mathf.Sign(myRigidBody.velocity.x));
             if(Mathf.Sign(myRigidBody.velocity.x).Equals(1f))
             {
                 right = 1;
@@ -142,12 +142,18 @@ public class Player : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
 
+            Vector3 playerPos = myRigidBody.transform.position;
+            Vector3 playerDirection = myRigidBody.transform.forward;
+            Quaternion playerRotation = myRigidBody.transform.rotation;
 
+            Vector3 spawnPosition = playerPos + playerDirection * 100;
              projectile.direction = right;
+            float addition = right * 0.5f;
+            Vector3 vec = new Vector3(myRigidBody.transform.position.x + addition, myRigidBody.transform.position.y, myRigidBody.transform.position.z);
             //projectile.y = transform.position.y;
             //projectile.x = transform.position.x
             
-            Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(projectile, vec, projectile.transform.rotation);
 
 
         }

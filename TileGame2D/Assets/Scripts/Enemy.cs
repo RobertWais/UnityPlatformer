@@ -35,14 +35,17 @@ public class Enemy : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), 1f);
+
+        //Destroy the other game object
+
     }
 
     private void Shot(){
-        if (capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Fireball")))
-        {
-            Debug.Log("Hit");
-            Destroy(gameObject);
-        }
+        //if (capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Fireball")))
+        //{
+        //    Debug.Log("Hit");
+        //    Destroy(gameObject);
+        //}
     }
 
 }

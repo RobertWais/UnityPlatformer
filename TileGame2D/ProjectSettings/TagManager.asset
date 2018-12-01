@@ -53,11 +53,11 @@ TagManager:
   - name: Hazards
     uniqueID: 3026143231
     locked: 0
-  - name: Fireball
-    uniqueID: 476833151
-    locked: 0
   - name: Player
     uniqueID: 2143505455
+    locked: 0
+  - name: Fireball
+    uniqueID: 476833151
     locked: 0
   - name: Foreground
     uniqueID: 2715235445

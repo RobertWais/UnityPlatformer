@@ -173,7 +173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290980197
 GameObject:
@@ -406,7 +406,7 @@ RectTransform:
   m_Children:
   - {fileID: 1986542031}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -754,48 +754,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 634389476}
   m_CullTransparentMesh: 0
---- !u!1001 &715847284
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.9438481
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.915
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.16002865
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647751356867618, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d6cb129d6c094ccfa97392b025d51bb, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &946017815
 GameObject:
   m_ObjectHideFlags: 0
